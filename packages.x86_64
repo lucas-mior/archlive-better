@@ -27,6 +27,7 @@ ethtool
 exfatprogs
 f2fs-tools
 fatresize
+firefox
 gpm
 grml-zsh-config
 grub
@@ -34,6 +35,8 @@ hdparm
 hyperv
 intel-ucode
 irssi
+iw
+iwd
 ldns
 less
 lftp
@@ -105,10 +108,9 @@ virtualbox-guest-utils-nox
 vpnc
 wireless-regdb
 wireless_tools
+wpa_supplicant
 wvdial
-xl2tpd
-zsh
-firefox
 xfce4
+xl2tpd
 xorg-server
-networkmanager
+zsh
