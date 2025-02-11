@@ -1,5 +1,11 @@
-For Wi-Fi, authenticate to the wireless network using the [35miwctl[0m utility.
-For mobile broadband (WWAN) modems, connect with the [35mmmcli[0m utility.
+For Wi-Fi: [35miwctl[0m
+For mobile broadband (WWAN) modems: [35mmmcli[0m
 Ethernet, WLAN and WWAN interfaces using DHCP should work automatically.
+More information on network: [35mlynx network.txt[0m
 
-To start graphical envorinment: startxfce4
+Installation guide: [35mlynx install.txt[0m
+
+To start graphical envorinment: [35mstartxfce4[0m
+To have more terminals: Press [35mctrl+alt+F2[0m
+
+Bug reports: https://github.com/lucas-mior/archlive-better/issues
