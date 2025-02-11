@@ -1,5 +1,7 @@
 # archlive-better
 
 ```sh
-sudo mkarchiso -v -w /tmp/mkarchiso/ -o /tmp/archlive-better/ archlive-better
+git clone https://github.com/lucas-mior/archlive-better
+cd archlive-better
+build.sh
 ```
