@@ -14,5 +14,5 @@ Major differences:
 ```sh
 git clone https://github.com/lucas-mior/archlive-better
 cd archlive-better
-build.sh # by default it saves the iso file at /tmp/
+./build.sh # by default it saves the iso file at /tmp/
 ```
