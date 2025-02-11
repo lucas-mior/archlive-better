@@ -9,6 +9,7 @@ Major differences:
 - Copy to ram is optional and disabled by default. Change on boot menu.
 - Bigger (~400MB more)
 - Accessibility stuff removed
+- Brazilian keyboard
 
 ## How to build
 ```sh
