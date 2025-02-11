@@ -6,7 +6,7 @@ Major differences:
 - Graphical environment (xfce).
 - Graphical browser (firefox).
 - Offline installation guide and network configuration pages from the wiki.
-- Copy to ram is optional and disabled by default.
+- Copy to ram is optional and disabled by default. Change on boot menu.
 - Bigger (~400MB more)
 
 ## How to build
