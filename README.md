@@ -8,6 +8,7 @@ Major differences:
 - Offline installation guide and network configuration pages from the wiki.
 - Copy to ram is optional and disabled by default. Change on boot menu.
 - Bigger (~400MB more)
+- Accessibility stuff removed
 
 ## How to build
 ```sh
