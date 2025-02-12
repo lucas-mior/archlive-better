@@ -1,6 +1,6 @@
+Ethernet, WLAN and WWAN interfaces using DHCP should work automatically.
 For Wi-Fi: [35miwctl[0m
 For mobile broadband (WWAN) modems: [35mmmcli[0m
-Ethernet, WLAN and WWAN interfaces using DHCP should work automatically.
 More information on network: [35mlynx network.txt[0m
 
 Installation guide: [35mlynx install.txt[0m
@@ -9,3 +9,9 @@ To start graphical envorinment: [35mstartxfce4[0m
 To have another terminal: Press [35mctrl+alt+F2[0m
 
 Bug reports: https://github.com/lucas-mior/archlive-better/issues
+
+To list block devices: [35mlsblk[0m
+To create a new partition table for device:
+[35mparted /dev/sda mklabel gpt   # GUID partition table[0m
+[35mparted /dev/sda mklabel msdos # MBR partition table[0m
+To partition block device: [35mcfdisk /dev/<disk>[0m
