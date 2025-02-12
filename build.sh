@@ -4,11 +4,10 @@ set -x
 
 dir="$(dirname "$0")"
 work="/var/cache/archlive-work/"
-iso_dir="${1:-/tmp/archlive-better/}"
+iso_dir="${1:-/tmp/}"
+[ ! -e "$iso_dir" ] && mkdir "$iso_dir"
 
-sudo rm $work/build_date 
-sudo rm $work/build._build_buildmode_iso
-sudo rm $work/base.*
+sudo bash -c "rm $work/build*; rm $work/iso.*"
 
 wiki_install="$dir/airootfs/root/install.html"
 wiki_network="$dir/airootfs/root/network.html"
