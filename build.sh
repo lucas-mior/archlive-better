@@ -1,11 +1,18 @@
 #!/bin/sh
 
+if [ -z "$1" ]; then
+    echo "usage: $0 <output directory>"
+    exit 1
+fi
 set -x
+
+iso_dir="$1"
 
 dir="$(dirname "$0")"
 work="/tmp/archlive-better/"
-iso_dir="${1:-/tmp/}"
-[ ! -e "$iso_dir" ] && mkdir "$iso_dir"
+if [ ! -e "$iso_dir" ]; then
+    mkdir "$iso_dir"
+fi
 
 sudo bash -c "rm -rf /$work/*"
 
