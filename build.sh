@@ -28,27 +28,33 @@ if [ "$(find "$network" -mtime +2)" ] || [ ! -e "$network" ]; then
     wget -qO - "https://${wiki_domain}/title/Installation_guide" > "$install"
 fi
 
-{
-    custom="custom"
-    surf="/tmp/surf"
-
-    if [ "$(find "$surf" -maxdepth 0 -mtime +2)" ] || [ ! -e "$surf" ]; then
-        rm -rf "$surf" "/tmp/$custom"
-        git clone https://aur.archlinux.org/surf.git "$surf"
+aur () {
+    pkg="$1"
+    d="/tmp/$1"
+    if [ "$(find "$d" -maxdepth 0 -mtime +2)" ] || [ ! -e "$d" ]; then
+        rm -rf "$d" "/tmp/$custom"
+        git clone "https://aur.archlinux.org/$pkg.git" "$d"
         previous_dir="$PWD"
-        cd "$surf"
+        cd "$d"
         PKGEXT=".pkg.tar" makepkg
         cd "$previous_dir"
     fi
 
     [ ! -e "/tmp/$custom" ] && mkdir "/tmp/$custom"
-    cp "$surf"/*.pkg.tar -t "/tmp/$custom"
+    cp "$d"/*.pkg.tar -t "/tmp/$custom"
+    if ! grep -q "^$pkg$" "$packages" ; then
+        echo "$pkg" >> "$packages" 
+    fi
+}
+
+{
+    custom="custom"
+
+    aur surf
+    aur localepurge
 
     repo-add "/tmp/$custom/$custom.db.tar.zst" \
              "/tmp/$custom/"*.pkg.tar
-    if ! grep -q "^surf$" "$packages" ; then
-        echo "surf" >> "$packages" 
-    fi
 }
 
 sudo mkarchiso -v -w "$work" -o "$iso_dir" "$dir"
