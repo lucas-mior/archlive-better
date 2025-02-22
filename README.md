@@ -7,7 +7,7 @@ Major differences:
 - Graphical browser (surf).
 - Offline installation guide and network configuration pages from the wiki.
 - Copy to ram is optional and disabled by default. Change on boot menu.
-- Bigger (~300MB more)
+- Bigger (~100MB more)
 - Accessibility stuff removed
 - Brazilian keyboard
 
