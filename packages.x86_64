@@ -27,7 +27,6 @@ ethtool
 exfatprogs
 f2fs-tools
 fatresize
-firefox
 gpm
 grml-zsh-config
 grub
@@ -114,3 +113,4 @@ xfce4
 xl2tpd
 xorg-server
 zsh
+surf
