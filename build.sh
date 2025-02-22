@@ -32,20 +32,17 @@ fi
     custom="custom"
     surf="/tmp/surf"
 
-    if [ "$(find ./surf/ -maxdepth 0 -mtime +2)" ] || [ ! -e "./surf/" ]; then
-        rm -rf surf "/tmp/$custom"
+    if [ "$(find "$surf" -maxdepth 0 -mtime +2)" ] || [ ! -e "$surf" ]; then
+        rm -rf "$surf" "/tmp/$custom"
         git clone https://aur.archlinux.org/surf.git "$surf"
-        pushd "$surf"
+        previous_dir="$PWD"
+        cd "$surf"
         PKGEXT=".pkg.tar" makepkg
-        popd ..
+        cd "$previous_dir"
     fi
-
-    previous_dir="$PWD"
 
     [ ! -e "/tmp/$custom" ] && mkdir "/tmp/$custom"
     cp "$surf"/*.pkg.tar -t "/tmp/$custom"
-
-    cd "$previous_dir"
 
     repo-add "/tmp/$custom/$custom.db.tar.zst" \
              "/tmp/$custom/"*.pkg.tar
