@@ -50,7 +50,6 @@ aur () {
 {
     custom="custom"
 
-    aur surf
     aur localepurge
 
     repo-add "/tmp/$custom/$custom.db.tar.zst" \
