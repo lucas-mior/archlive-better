@@ -113,6 +113,5 @@ xfce4
 xl2tpd
 xorg-server
 zsh
-dmenu
-surf
 localepurge
+netsurf
