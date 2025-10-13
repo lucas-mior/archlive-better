@@ -10,7 +10,7 @@ set -x
 iso_dir="$1"
 packages="./packages.x86_64"
 
-dir="$(dirname "$0")"
+dir=$(dirname "$0")
 work="/tmp/archlive-better/"
 if [ ! -e "$iso_dir" ]; then
     mkdir "$iso_dir"
@@ -23,7 +23,7 @@ network="$dir/airootfs/root/network.html"
 
 wiki_domain="wiki.archlinux.org"
 
-if [ "$(find "$network" -mtime +2)" ] || [ ! -e "$network" ]; then
+if [ -n "$(find "$network" -mtime +2)" ] || [ ! -e "$network" ]; then
     wget -qO - "https://${wiki_domain}/title/Network_configuration" > "$network"
     wget -qO - "https://${wiki_domain}/title/Installation_guide" > "$install"
 fi
@@ -40,7 +40,9 @@ aur () {
         cd "$previous_dir"
     fi
 
-    [ ! -e "/tmp/$custom" ] && mkdir "/tmp/$custom"
+    if [ ! -e "/tmp/$custom" ]; then
+        mkdir "/tmp/$custom"
+    fi
     cp "$d"/*.pkg.tar -t "/tmp/$custom"
     if ! grep -q "^$pkg$" "$packages" ; then
         echo "$pkg" >> "$packages" 
