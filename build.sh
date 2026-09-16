@@ -31,7 +31,10 @@ fi
 aur () {
     pkg="$1"
     d="/tmp/$1"
-    if [ "$(find "$d" -maxdepth 0 -mtime +2)" ] || [ ! -e "$d" ]; then
+    built_pkg="$(find "$d" -maxdepth 1 -name "*.pkg.tar" -print -quit 2>/dev/null)"
+    if [ "$(find "$d" -maxdepth 0 -mtime +2 2>/dev/null)" ] || \
+       [ ! -e "$d" ] || \
+       [ -z "$built_pkg" ]; then
         rm -rf "$d" "/tmp/$custom"
         git clone "https://aur.archlinux.org/$pkg.git" "$d"
         previous_dir="$PWD"
