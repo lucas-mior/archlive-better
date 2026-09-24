@@ -5,7 +5,7 @@ with changes and additional features from the *releng* profile.
 
 ## Major differences
 - Graphical environment (xfce).
-- Graphical browser (surf).
+- Graphical browser (netsurf).
 - Offline installation guide and network configuration pages from the wiki.
 - Copy to ram is optional and disabled by default. Change on boot menu.
 - No accessibility boot entries
