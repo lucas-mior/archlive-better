@@ -28,37 +28,4 @@ if [ -n "$(find "$network" -mtime +2)" ] || [ ! -e "$network" ]; then
     wget -qO - "https://${wiki_domain}/title/Installation_guide" > "$install"
 fi
 
-aur () {
-    pkg="$1"
-    d="/tmp/$1"
-    built_pkg="$(find "$d" -maxdepth 1 -name "*.pkg.tar" -print -quit 2>/dev/null)"
-    if [ "$(find "$d" -maxdepth 0 -mtime +2 2>/dev/null)" ] || \
-       [ ! -e "$d" ] || \
-       [ -z "$built_pkg" ]; then
-        rm -rf "$d" "/tmp/$custom"
-        git clone "https://aur.archlinux.org/$pkg.git" "$d"
-        previous_dir="$PWD"
-        cd "$d"
-        PKGEXT=".pkg.tar" makepkg
-        cd "$previous_dir"
-    fi
-
-    if [ ! -e "/tmp/$custom" ]; then
-        mkdir "/tmp/$custom"
-    fi
-    cp "$d"/*.pkg.tar -t "/tmp/$custom"
-    if ! grep -q "^$pkg$" "$packages" ; then
-        echo "$pkg" >> "$packages" 
-    fi
-}
-
-{
-    custom="custom"
-
-    aur localepurge
-
-    repo-add "/tmp/$custom/$custom.db.tar.zst" \
-             "/tmp/$custom/"*.pkg.tar
-}
-
 sudo mkarchiso -v -w "$work" -o "$iso_dir" "$dir"

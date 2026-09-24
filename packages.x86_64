@@ -6,7 +6,6 @@ b43-fwcutter
 base
 bind
 bolt
-broadcom-wl
 btrfs-progs
 clonezilla
 cryptsetup
@@ -113,5 +112,4 @@ xfce4
 xl2tpd
 xorg-server
 zsh
-localepurge
 netsurf
